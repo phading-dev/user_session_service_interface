@@ -27,4 +27,29 @@
     "outputWebClient": "./backend_client_requests",
     "outputHandler": "./backend_server_handlers"
   }
+}, {
+  "name": "ValidateSessionRequestBody",
+  "message": {
+    "fields": [{
+      "name": "sessionId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "ValidateSessionResponse",
+  "message": {
+    "fields": [{
+      "name": "valid",
+      "type": "boolean"
+    }]
+  }
+}, {
+  "name": "ValidateSession",
+  "service": {
+    "path": "/ValidateSession",
+    "body": "ValidateSessionRequestBody",
+    "response": "ValidateSessionResponse",
+    "outputWebClient": "./backend_client_requests",
+    "outputHandler": "./backend_server_handlers"
+  }
 }]
