@@ -1,0 +1,9 @@
+[{
+  "name": "WebClientSession",
+  "message": {
+    "fields": [{
+      "name": "sessionId",
+      "type": "string"
+    }]
+  }
+}]

@@ -1,0 +1,30 @@
+[{
+  "name": "StartNewSessionRequestBody",
+  "message": {
+    "fields": [{
+      "name": "authId",
+      "type": "string"
+    }, {
+      "name": "accountId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "StartNewSessionResponse",
+  "message": {
+    "fields": [{
+      "name": "webClientSession",
+      "type": "WebClientSession",
+      "import": "./web_client_session"
+    }]
+  }
+}, {
+  "name": "StartNewSession",
+  "service": {
+    "path": "/StartNewSession",
+    "body": "StartNewSessionRequestBody",
+    "response": "StartNewSessionResponse",
+    "outputWebClient": "./backend_client_requests",
+    "outputHandler": "./backend_server_handlers"
+  }
+}]
