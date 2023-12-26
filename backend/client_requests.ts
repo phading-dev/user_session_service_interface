@@ -1,5 +1,5 @@
 import { WebServiceClientInterface } from '@selfage/service_descriptor/web_service_client_interface';
-import { StartNewSessionRequestBody, StartNewSessionResponse, START_NEW_SESSION, ValidateSessionRequestBody, ValidateSessionResponse, VALIDATE_SESSION } from './backend_interface';
+import { StartNewSessionRequestBody, StartNewSessionResponse, START_NEW_SESSION, ValidateSessionRequestBody, ValidateSessionResponse, VALIDATE_SESSION } from './interface';
 
 export function startNewSession(
   client: WebServiceClientInterface,

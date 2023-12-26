@@ -1,5 +1,5 @@
 import { ServiceHandlerInterface } from '@selfage/service_descriptor/service_handler_interface';
-import { START_NEW_SESSION, StartNewSessionRequestBody, StartNewSessionResponse, VALIDATE_SESSION, ValidateSessionRequestBody, ValidateSessionResponse } from './backend_interface';
+import { START_NEW_SESSION, StartNewSessionRequestBody, StartNewSessionResponse, VALIDATE_SESSION, ValidateSessionRequestBody, ValidateSessionResponse } from './interface';
 
 export abstract class StartNewSessionHandlerInterface implements ServiceHandlerInterface {
   public descriptor = START_NEW_SESSION;

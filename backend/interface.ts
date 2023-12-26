@@ -1,5 +1,5 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
-import { WebClientSession, WEB_CLIENT_SESSION } from './web_client_session';
+import { WebClientSession, WEB_CLIENT_SESSION } from '../web_client_session';
 import { ServiceDescriptor } from '@selfage/service_descriptor';
 
 export interface StartNewSessionRequestBody {

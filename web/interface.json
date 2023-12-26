@@ -19,10 +19,10 @@
     "auth": {
       "key": "auth",
       "type": "WebClientSession",
-      "import": "./web_client_session"
+      "import": "../web_client_session"
     },
     "response": "RenewWebClientSessionResponse",
-    "outputWebClient": "./web_client_requests",
-    "outputHandler": "./web_server_handlers"
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
   }
 }]
