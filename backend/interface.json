@@ -1,8 +1,8 @@
 [{
-  "name": "StartNewSessionRequestBody",
+  "name": "CreateClientSessionRequestBody",
   "message": {
     "fields": [{
-      "name": "authId",
+      "name": "userId",
       "type": "string"
     }, {
       "name": "accountId",
@@ -10,45 +10,46 @@
     }]
   }
 }, {
-  "name": "StartNewSessionResponse",
+  "name": "CreateClientSessionResponse",
   "message": {
     "fields": [{
-      "name": "webClientSession",
-      "type": "WebClientSession",
-      "import": "../web_client_session"
-    }]
-  }
-}, {
-  "name": "StartNewSession",
-  "service": {
-    "path": "/StartNewSession",
-    "body": "StartNewSessionRequestBody",
-    "response": "StartNewSessionResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "ValidateSessionRequestBody",
-  "message": {
-    "fields": [{
-      "name": "sessionId",
+      "name": "signedSession",
       "type": "string"
     }]
   }
 }, {
-  "name": "ValidateSessionResponse",
+  "name": "CreateClientSession",
+  "service": {
+    "path": "/CreateClientSession",
+    "body": "CreateClientSessionRequestBody",
+    "response": "CreateClientSessionResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "ValidateAndRetrieveTrustedSessionRequestBody",
   "message": {
     "fields": [{
-      "name": "valid",
-      "type": "boolean"
+      "name": "clientSession",
+      "type": "ClientSession",
+      "import": "../client_session"
     }]
   }
 }, {
-  "name": "ValidateSession",
+  "name": "ValidateAndRetrieveTrustedSessionResponse",
+  "message": {
+    "fields": [{
+      "name": "trustedSession",
+      "type": "TrustedSession",
+      "import": "./trusted_session"
+    }]
+  }
+}, {
+  "name": "ValidateAndRetrieveTrustedSession",
   "service": {
-    "path": "/ValidateSession",
-    "body": "ValidateSessionRequestBody",
-    "response": "ValidateSessionResponse",
+    "path": "/ValidateAndRetrieveTrustedSession",
+    "body": "ValidateAndRetrieveTrustedSessionRequestBody",
+    "response": "ValidateAndRetrieveTrustedSessionResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }

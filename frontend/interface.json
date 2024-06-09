@@ -1,0 +1,28 @@
+[{
+  "name": "RenewClientSessionRequestBody",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "RenewClientSessionResponse",
+  "message": {
+    "fields": [{
+      "name": "signedSession",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "RenewClientSession",
+  "service": {
+    "path": "/RenewClientSession",
+    "body": "RenewClientSessionRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "ClientSession",
+      "import": "../client_session"
+    },
+    "response": "RenewClientSessionResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}]

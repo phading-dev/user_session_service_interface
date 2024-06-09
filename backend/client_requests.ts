@@ -1,22 +1,22 @@
 import { WebServiceClientInterface } from '@selfage/service_descriptor/web_service_client_interface';
-import { StartNewSessionRequestBody, StartNewSessionResponse, START_NEW_SESSION, ValidateSessionRequestBody, ValidateSessionResponse, VALIDATE_SESSION } from './interface';
+import { CreateClientSessionRequestBody, CreateClientSessionResponse, CREATE_CLIENT_SESSION, ValidateAndRetrieveTrustedSessionRequestBody, ValidateAndRetrieveTrustedSessionResponse, VALIDATE_AND_RETRIEVE_TRUSTED_SESSION } from './interface';
 
-export function startNewSession(
+export function createClientSession(
   client: WebServiceClientInterface,
-  body: StartNewSessionRequestBody,
-): Promise<StartNewSessionResponse> {
+  body: CreateClientSessionRequestBody,
+): Promise<CreateClientSessionResponse> {
   return client.send({
-    descriptor: START_NEW_SESSION,
+    descriptor: CREATE_CLIENT_SESSION,
     body,
   });
 }
 
-export function validateSession(
+export function validateAndRetrieveTrustedSession(
   client: WebServiceClientInterface,
-  body: ValidateSessionRequestBody,
-): Promise<ValidateSessionResponse> {
+  body: ValidateAndRetrieveTrustedSessionRequestBody,
+): Promise<ValidateAndRetrieveTrustedSessionResponse> {
   return client.send({
-    descriptor: VALIDATE_SESSION,
+    descriptor: VALIDATE_AND_RETRIEVE_TRUSTED_SESSION,
     body,
   });
 }

@@ -1,17 +1,18 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
-import { WebClientSession, WEB_CLIENT_SESSION } from '../web_client_session';
 import { ServiceDescriptor } from '@selfage/service_descriptor';
+import { ClientSession, CLIENT_SESSION } from '../client_session';
+import { TrustedSession, TRUSTED_SESSION } from './trusted_session';
 
-export interface StartNewSessionRequestBody {
-  authId?: string,
+export interface CreateClientSessionRequestBody {
+  userId?: string,
   accountId?: string,
 }
 
-export let START_NEW_SESSION_REQUEST_BODY: MessageDescriptor<StartNewSessionRequestBody> = {
-  name: 'StartNewSessionRequestBody',
+export let CREATE_CLIENT_SESSION_REQUEST_BODY: MessageDescriptor<CreateClientSessionRequestBody> = {
+  name: 'CreateClientSessionRequestBody',
   fields: [
     {
-      name: 'authId',
+      name: 'userId',
       primitiveType: PrimitiveType.STRING,
     },
     {
@@ -21,66 +22,66 @@ export let START_NEW_SESSION_REQUEST_BODY: MessageDescriptor<StartNewSessionRequ
   ]
 };
 
-export interface StartNewSessionResponse {
-  webClientSession?: WebClientSession,
+export interface CreateClientSessionResponse {
+  signedSession?: string,
 }
 
-export let START_NEW_SESSION_RESPONSE: MessageDescriptor<StartNewSessionResponse> = {
-  name: 'StartNewSessionResponse',
+export let CREATE_CLIENT_SESSION_RESPONSE: MessageDescriptor<CreateClientSessionResponse> = {
+  name: 'CreateClientSessionResponse',
   fields: [
     {
-      name: 'webClientSession',
-      messageType: WEB_CLIENT_SESSION,
-    },
-  ]
-};
-
-export let START_NEW_SESSION: ServiceDescriptor = {
-  name: "StartNewSession",
-  path: "/StartNewSession",
-  body: {
-    messageType: START_NEW_SESSION_REQUEST_BODY,
-  },
-  response: {
-    messageType: START_NEW_SESSION_RESPONSE,
-  },
-}
-
-export interface ValidateSessionRequestBody {
-  sessionId?: string,
-}
-
-export let VALIDATE_SESSION_REQUEST_BODY: MessageDescriptor<ValidateSessionRequestBody> = {
-  name: 'ValidateSessionRequestBody',
-  fields: [
-    {
-      name: 'sessionId',
+      name: 'signedSession',
       primitiveType: PrimitiveType.STRING,
     },
   ]
 };
 
-export interface ValidateSessionResponse {
-  valid?: boolean,
+export let CREATE_CLIENT_SESSION: ServiceDescriptor = {
+  name: "CreateClientSession",
+  path: "/CreateClientSession",
+  body: {
+    messageType: CREATE_CLIENT_SESSION_REQUEST_BODY,
+  },
+  response: {
+    messageType: CREATE_CLIENT_SESSION_RESPONSE,
+  },
 }
 
-export let VALIDATE_SESSION_RESPONSE: MessageDescriptor<ValidateSessionResponse> = {
-  name: 'ValidateSessionResponse',
+export interface ValidateAndRetrieveTrustedSessionRequestBody {
+  clientSession?: ClientSession,
+}
+
+export let VALIDATE_AND_RETRIEVE_TRUSTED_SESSION_REQUEST_BODY: MessageDescriptor<ValidateAndRetrieveTrustedSessionRequestBody> = {
+  name: 'ValidateAndRetrieveTrustedSessionRequestBody',
   fields: [
     {
-      name: 'valid',
-      primitiveType: PrimitiveType.BOOLEAN,
+      name: 'clientSession',
+      messageType: CLIENT_SESSION,
     },
   ]
 };
 
-export let VALIDATE_SESSION: ServiceDescriptor = {
-  name: "ValidateSession",
-  path: "/ValidateSession",
+export interface ValidateAndRetrieveTrustedSessionResponse {
+  trustedSession?: TrustedSession,
+}
+
+export let VALIDATE_AND_RETRIEVE_TRUSTED_SESSION_RESPONSE: MessageDescriptor<ValidateAndRetrieveTrustedSessionResponse> = {
+  name: 'ValidateAndRetrieveTrustedSessionResponse',
+  fields: [
+    {
+      name: 'trustedSession',
+      messageType: TRUSTED_SESSION,
+    },
+  ]
+};
+
+export let VALIDATE_AND_RETRIEVE_TRUSTED_SESSION: ServiceDescriptor = {
+  name: "ValidateAndRetrieveTrustedSession",
+  path: "/ValidateAndRetrieveTrustedSession",
   body: {
-    messageType: VALIDATE_SESSION_REQUEST_BODY,
+    messageType: VALIDATE_AND_RETRIEVE_TRUSTED_SESSION_REQUEST_BODY,
   },
   response: {
-    messageType: VALIDATE_SESSION_RESPONSE,
+    messageType: VALIDATE_AND_RETRIEVE_TRUSTED_SESSION_RESPONSE,
   },
 }

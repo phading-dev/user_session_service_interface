@@ -1,5 +1,5 @@
 [{
-  "name": "WebClientSession",
+  "name": "ClientSession",
   "message": {
     "fields": [{
       "name": "sessionId",

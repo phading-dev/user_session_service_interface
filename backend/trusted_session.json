@@ -1,0 +1,19 @@
+[{
+  "name": "TrustedSession",
+  "message": {
+    "fields": [{
+      "name": "sessionId",
+      "type": "string"
+    }, {
+      "name": "userId",
+      "type": "string"
+    }, {
+      "name": "accountId",
+      "type": "string"
+    }, {
+      "name": "accountType",
+      "type": "AccountType",
+      "import": "../account_type"
+    }]
+  }
+}]

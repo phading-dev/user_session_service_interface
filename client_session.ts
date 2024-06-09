@@ -1,11 +1,11 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 
-export interface WebClientSession {
+export interface ClientSession {
   sessionId?: string,
 }
 
-export let WEB_CLIENT_SESSION: MessageDescriptor<WebClientSession> = {
-  name: 'WebClientSession',
+export let CLIENT_SESSION: MessageDescriptor<ClientSession> = {
+  name: 'ClientSession',
   fields: [
     {
       name: 'sessionId',

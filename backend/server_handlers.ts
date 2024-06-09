@@ -1,18 +1,18 @@
 import { ServiceHandlerInterface } from '@selfage/service_descriptor/service_handler_interface';
-import { START_NEW_SESSION, StartNewSessionRequestBody, StartNewSessionResponse, VALIDATE_SESSION, ValidateSessionRequestBody, ValidateSessionResponse } from './interface';
+import { CREATE_CLIENT_SESSION, CreateClientSessionRequestBody, CreateClientSessionResponse, VALIDATE_AND_RETRIEVE_TRUSTED_SESSION, ValidateAndRetrieveTrustedSessionRequestBody, ValidateAndRetrieveTrustedSessionResponse } from './interface';
 
-export abstract class StartNewSessionHandlerInterface implements ServiceHandlerInterface {
-  public descriptor = START_NEW_SESSION;
+export abstract class CreateClientSessionHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = CREATE_CLIENT_SESSION;
   public abstract handle(
-    requestId: string,
-    body: StartNewSessionRequestBody,
-  ): Promise<StartNewSessionResponse>;
+    loggingPrefix: string,
+    body: CreateClientSessionRequestBody,
+  ): Promise<CreateClientSessionResponse>;
 }
 
-export abstract class ValidateSessionHandlerInterface implements ServiceHandlerInterface {
-  public descriptor = VALIDATE_SESSION;
+export abstract class ValidateAndRetrieveTrustedSessionHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = VALIDATE_AND_RETRIEVE_TRUSTED_SESSION;
   public abstract handle(
-    requestId: string,
-    body: ValidateSessionRequestBody,
-  ): Promise<ValidateSessionResponse>;
+    loggingPrefix: string,
+    body: ValidateAndRetrieveTrustedSessionRequestBody,
+  ): Promise<ValidateAndRetrieveTrustedSessionResponse>;
 }
