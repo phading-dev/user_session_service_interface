@@ -1,15 +1,13 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
-import { AccountType, ACCOUNT_TYPE } from '../account_type';
 
-export interface TrustedSession {
+export interface PlainSession {
   sessionId?: string,
   userId?: string,
   accountId?: string,
-  accountType?: AccountType,
 }
 
-export let TRUSTED_SESSION: MessageDescriptor<TrustedSession> = {
-  name: 'TrustedSession',
+export let PLAIN_SESSION: MessageDescriptor<PlainSession> = {
+  name: 'PlainSession',
   fields: [
     {
       name: 'sessionId',
@@ -22,10 +20,6 @@ export let TRUSTED_SESSION: MessageDescriptor<TrustedSession> = {
     {
       name: 'accountId',
       primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'accountType',
-      enumType: ACCOUNT_TYPE,
     },
   ]
 };

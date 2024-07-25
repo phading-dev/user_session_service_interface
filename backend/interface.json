@@ -27,29 +27,41 @@
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "ValidateAndRetrieveTrustedSessionRequestBody",
+  "name": "ExchangeSessionAndCheckCapabilityRequestBody",
   "message": {
     "fields": [{
       "name": "clientSession",
       "type": "ClientSession",
       "import": "../client_session"
+    }, {
+      "name": "checkCanConsumeShows",
+      "type": "boolean"
+    }, {
+      "name": "checkCanPublishShows",
+      "type": "boolean"
     }]
   }
 }, {
-  "name": "ValidateAndRetrieveTrustedSessionResponse",
+  "name": "ExchangeSessionAndCheckCapabilityResponse",
   "message": {
     "fields": [{
-      "name": "trustedSession",
-      "type": "TrustedSession",
-      "import": "./trusted_session"
+      "name": "plainSession",
+      "type": "PlainSession",
+      "import": "./plain_session"
+    }, {
+      "name": "canConsumeShows",
+      "type": "boolean"
+    }, {
+      "name": "canPublishShows",
+      "type": "boolean"
     }]
   }
 }, {
-  "name": "ValidateAndRetrieveTrustedSession",
+  "name": "ExchangeSessionAndCheckCapability",
   "service": {
-    "path": "/ValidateAndRetrieveTrustedSession",
-    "body": "ValidateAndRetrieveTrustedSessionRequestBody",
-    "response": "ValidateAndRetrieveTrustedSessionResponse",
+    "path": "/ExchangeSessionAndCheckCapability",
+    "body": "ExchangeSessionAndCheckCapabilityRequestBody",
+    "response": "ExchangeSessionAndCheckCapabilityResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }

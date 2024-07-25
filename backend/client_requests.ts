@@ -1,5 +1,5 @@
 import { WebServiceClientInterface } from '@selfage/service_descriptor/web_service_client_interface';
-import { CreateClientSessionRequestBody, CreateClientSessionResponse, CREATE_CLIENT_SESSION, ValidateAndRetrieveTrustedSessionRequestBody, ValidateAndRetrieveTrustedSessionResponse, VALIDATE_AND_RETRIEVE_TRUSTED_SESSION } from './interface';
+import { CreateClientSessionRequestBody, CreateClientSessionResponse, CREATE_CLIENT_SESSION, ExchangeSessionAndCheckCapabilityRequestBody, ExchangeSessionAndCheckCapabilityResponse, EXCHANGE_SESSION_AND_CHECK_CAPABILITY } from './interface';
 
 export function createClientSession(
   client: WebServiceClientInterface,
@@ -11,12 +11,12 @@ export function createClientSession(
   });
 }
 
-export function validateAndRetrieveTrustedSession(
+export function exchangeSessionAndCheckCapability(
   client: WebServiceClientInterface,
-  body: ValidateAndRetrieveTrustedSessionRequestBody,
-): Promise<ValidateAndRetrieveTrustedSessionResponse> {
+  body: ExchangeSessionAndCheckCapabilityRequestBody,
+): Promise<ExchangeSessionAndCheckCapabilityResponse> {
   return client.send({
-    descriptor: VALIDATE_AND_RETRIEVE_TRUSTED_SESSION,
+    descriptor: EXCHANGE_SESSION_AND_CHECK_CAPABILITY,
     body,
   });
 }

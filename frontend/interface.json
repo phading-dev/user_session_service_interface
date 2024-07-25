@@ -25,4 +25,40 @@
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
+}, {
+  "name": "CheckCapabilityRequestBody",
+  "message": {
+    "fields": [{
+      "name": "checkCanConsumeShows",
+      "type": "boolean"
+    }, {
+      "name": "checkCanPublishShows",
+      "type": "boolean"
+    }]
+  }
+}, {
+  "name": "CheckCapabilityResponse",
+  "message": {
+    "fields": [{
+      "name": "canConsumeShows",
+      "type": "boolean"
+    }, {
+      "name": "canPublishShows",
+      "type": "boolean"
+    }]
+  }
+}, {
+  "name": "CheckCapability",
+  "service": {
+    "path": "/CheckCapability",
+    "body": "CheckCapabilityRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "ClientSession",
+      "import": "../client_session"
+    },
+    "response": "CheckCapabilityResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
 }]

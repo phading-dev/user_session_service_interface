@@ -1,7 +1,7 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 import { ServiceDescriptor } from '@selfage/service_descriptor';
 import { ClientSession, CLIENT_SESSION } from '../client_session';
-import { TrustedSession, TRUSTED_SESSION } from './trusted_session';
+import { PlainSession, PLAIN_SESSION } from './plain_session';
 
 export interface CreateClientSessionRequestBody {
   userId?: string,
@@ -47,41 +47,61 @@ export let CREATE_CLIENT_SESSION: ServiceDescriptor = {
   },
 }
 
-export interface ValidateAndRetrieveTrustedSessionRequestBody {
+export interface ExchangeSessionAndCheckCapabilityRequestBody {
   clientSession?: ClientSession,
+  checkCanConsumeShows?: boolean,
+  checkCanPublishShows?: boolean,
 }
 
-export let VALIDATE_AND_RETRIEVE_TRUSTED_SESSION_REQUEST_BODY: MessageDescriptor<ValidateAndRetrieveTrustedSessionRequestBody> = {
-  name: 'ValidateAndRetrieveTrustedSessionRequestBody',
+export let EXCHANGE_SESSION_AND_CHECK_CAPABILITY_REQUEST_BODY: MessageDescriptor<ExchangeSessionAndCheckCapabilityRequestBody> = {
+  name: 'ExchangeSessionAndCheckCapabilityRequestBody',
   fields: [
     {
       name: 'clientSession',
       messageType: CLIENT_SESSION,
     },
-  ]
-};
-
-export interface ValidateAndRetrieveTrustedSessionResponse {
-  trustedSession?: TrustedSession,
-}
-
-export let VALIDATE_AND_RETRIEVE_TRUSTED_SESSION_RESPONSE: MessageDescriptor<ValidateAndRetrieveTrustedSessionResponse> = {
-  name: 'ValidateAndRetrieveTrustedSessionResponse',
-  fields: [
     {
-      name: 'trustedSession',
-      messageType: TRUSTED_SESSION,
+      name: 'checkCanConsumeShows',
+      primitiveType: PrimitiveType.BOOLEAN,
+    },
+    {
+      name: 'checkCanPublishShows',
+      primitiveType: PrimitiveType.BOOLEAN,
     },
   ]
 };
 
-export let VALIDATE_AND_RETRIEVE_TRUSTED_SESSION: ServiceDescriptor = {
-  name: "ValidateAndRetrieveTrustedSession",
-  path: "/ValidateAndRetrieveTrustedSession",
+export interface ExchangeSessionAndCheckCapabilityResponse {
+  plainSession?: PlainSession,
+  canConsumeShows?: boolean,
+  canPublishShows?: boolean,
+}
+
+export let EXCHANGE_SESSION_AND_CHECK_CAPABILITY_RESPONSE: MessageDescriptor<ExchangeSessionAndCheckCapabilityResponse> = {
+  name: 'ExchangeSessionAndCheckCapabilityResponse',
+  fields: [
+    {
+      name: 'plainSession',
+      messageType: PLAIN_SESSION,
+    },
+    {
+      name: 'canConsumeShows',
+      primitiveType: PrimitiveType.BOOLEAN,
+    },
+    {
+      name: 'canPublishShows',
+      primitiveType: PrimitiveType.BOOLEAN,
+    },
+  ]
+};
+
+export let EXCHANGE_SESSION_AND_CHECK_CAPABILITY: ServiceDescriptor = {
+  name: "ExchangeSessionAndCheckCapability",
+  path: "/ExchangeSessionAndCheckCapability",
   body: {
-    messageType: VALIDATE_AND_RETRIEVE_TRUSTED_SESSION_REQUEST_BODY,
+    messageType: EXCHANGE_SESSION_AND_CHECK_CAPABILITY_REQUEST_BODY,
   },
   response: {
-    messageType: VALIDATE_AND_RETRIEVE_TRUSTED_SESSION_RESPONSE,
+    messageType: EXCHANGE_SESSION_AND_CHECK_CAPABILITY_RESPONSE,
   },
 }

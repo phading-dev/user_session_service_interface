@@ -1,5 +1,5 @@
 [{
-  "name": "TrustedSession",
+  "name": "PlainSession",
   "message": {
     "fields": [{
       "name": "sessionId",
@@ -10,10 +10,6 @@
     }, {
       "name": "accountId",
       "type": "string"
-    }, {
-      "name": "accountType",
-      "type": "AccountType",
-      "import": "../account_type"
     }]
   }
 }]
