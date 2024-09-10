@@ -1,9 +1,10 @@
 [{
-  "name": "ClientSession",
   "message": {
+    "name": "ClientSession",
     "fields": [{
       "name": "sessionId",
-      "type": "string"
+      "type": "string",
+      "index": 1
     }]
   }
 }]

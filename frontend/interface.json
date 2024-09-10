@@ -1,64 +1,68 @@
 [{
-  "name": "RenewClientSessionRequestBody",
   "message": {
+    "name": "RenewClientSessionRequestBody",
     "fields": []
   }
 }, {
-  "name": "RenewClientSessionResponse",
   "message": {
+    "name": "RenewClientSessionResponse",
     "fields": [{
       "name": "signedSession",
-      "type": "string"
+      "type": "string",
+      "index": 1
     }]
   }
 }, {
-  "name": "RenewClientSession",
-  "service": {
-    "path": "/RenewClientSession",
-    "body": "RenewClientSessionRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "ClientSession",
-      "import": "../client_session"
-    },
-    "response": "RenewClientSessionResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "CheckCapabilityRequestBody",
   "message": {
+    "name": "CheckCapabilityRequestBody",
     "fields": [{
       "name": "checkCanConsumeShows",
-      "type": "boolean"
+      "type": "boolean",
+      "index": 1
     }, {
       "name": "checkCanPublishShows",
-      "type": "boolean"
+      "type": "boolean",
+      "index": 2
     }]
   }
 }, {
-  "name": "CheckCapabilityResponse",
   "message": {
+    "name": "CheckCapabilityResponse",
     "fields": [{
       "name": "canConsumeShows",
-      "type": "boolean"
+      "type": "boolean",
+      "index": 1
     }, {
       "name": "canPublishShows",
-      "type": "boolean"
+      "type": "boolean",
+      "index": 2
     }]
   }
 }, {
-  "name": "CheckCapability",
-  "service": {
-    "path": "/CheckCapability",
-    "body": "CheckCapabilityRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "ClientSession",
-      "import": "../client_session"
-    },
-    "response": "CheckCapabilityResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
+  "webService": {
+    "name": "UserSessionFrontendService",
+    "remoteCalls": [{
+      "name": "CheckCapability",
+      "path": "/CheckCapability",
+      "body": "CheckCapabilityRequestBody",
+      "auth": {
+        "key": "auth",
+        "type": "ClientSession",
+        "import": "./client_session"
+      },
+      "response": "CheckCapabilityResponse"
+    }, {
+      "name": "RenewClientSession",
+      "path": "/RenewClientSession",
+      "body": "RenewClientSessionRequestBody",
+      "auth": {
+        "key": "auth",
+        "type": "ClientSession",
+        "import": "./client_session"
+      },
+      "response": "RenewClientSessionResponse"
+    }],
+    "outputClient": "./frontend/client",
+    "outputHandler": "./frontend/handler"
   }
 }]

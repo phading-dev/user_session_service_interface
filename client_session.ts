@@ -1,4 +1,4 @@
-import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
+import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 
 export interface ClientSession {
   sessionId?: string,
@@ -6,10 +6,9 @@ export interface ClientSession {
 
 export let CLIENT_SESSION: MessageDescriptor<ClientSession> = {
   name: 'ClientSession',
-  fields: [
-    {
-      name: 'sessionId',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
+  fields: [{
+    name: 'sessionId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
 };

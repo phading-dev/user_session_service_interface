@@ -1,15 +1,18 @@
 [{
-  "name": "PlainSession",
   "message": {
+    "name": "PlainSession",
     "fields": [{
       "name": "sessionId",
-      "type": "string"
+      "type": "string",
+      "index": 1
     }, {
       "name": "userId",
-      "type": "string"
+      "type": "string",
+      "index": 2
     }, {
       "name": "accountId",
-      "type": "string"
+      "type": "string",
+      "index": 3
     }]
   }
 }]

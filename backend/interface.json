@@ -1,68 +1,76 @@
 [{
-  "name": "CreateClientSessionRequestBody",
   "message": {
+    "name": "CreateClientSessionRequestBody",
     "fields": [{
       "name": "userId",
-      "type": "string"
+      "type": "string",
+      "index": 1
     }, {
       "name": "accountId",
-      "type": "string"
+      "type": "string",
+      "index": 2
     }]
   }
 }, {
-  "name": "CreateClientSessionResponse",
   "message": {
+    "name": "CreateClientSessionResponse",
     "fields": [{
       "name": "signedSession",
-      "type": "string"
+      "type": "string",
+      "index": 1
     }]
   }
 }, {
-  "name": "CreateClientSession",
-  "service": {
-    "path": "/CreateClientSession",
-    "body": "CreateClientSessionRequestBody",
-    "response": "CreateClientSessionResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "ExchangeSessionAndCheckCapabilityRequestBody",
   "message": {
+    "name": "ExchangeSessionAndCheckCapabilityRequestBody",
     "fields": [{
       "name": "clientSession",
       "type": "ClientSession",
-      "import": "../client_session"
+      "import": "./client_session",
+      "index": 1
     }, {
       "name": "checkCanConsumeShows",
-      "type": "boolean"
+      "type": "boolean",
+      "index": 2
     }, {
       "name": "checkCanPublishShows",
-      "type": "boolean"
+      "type": "boolean",
+      "index": 3
     }]
   }
 }, {
-  "name": "ExchangeSessionAndCheckCapabilityResponse",
   "message": {
+    "name": "ExchangeSessionAndCheckCapabilityResponse",
     "fields": [{
       "name": "plainSession",
       "type": "PlainSession",
-      "import": "./plain_session"
+      "import": "./backend/plain_session",
+      "index": 1
     }, {
       "name": "canConsumeShows",
-      "type": "boolean"
+      "type": "boolean",
+      "index": 2
     }, {
       "name": "canPublishShows",
-      "type": "boolean"
+      "type": "boolean",
+      "index": 3
     }]
   }
 }, {
-  "name": "ExchangeSessionAndCheckCapability",
-  "service": {
-    "path": "/ExchangeSessionAndCheckCapability",
-    "body": "ExchangeSessionAndCheckCapabilityRequestBody",
-    "response": "ExchangeSessionAndCheckCapabilityResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
+  "nodeService": {
+    "name": "UserSessionBackendService",
+    "remoteCalls": [{
+      "name": "CreateClientSession",
+      "path": "/CreateClientSession",
+      "body": "CreateClientSessionRequestBody",
+      "response": "CreateClientSessionResponse"
+    }, {
+      "name": "ExchangeSessionAndCheckCapability",
+      "path": "/ExchangeSessionAndCheckCapability",
+      "body": "ExchangeSessionAndCheckCapabilityRequestBody",
+      "response": "ExchangeSessionAndCheckCapabilityResponse"
+    }],
+    "outputClient": "./backend/client",
+    "outputHandler": "./backend/handler"
   }
 }]
