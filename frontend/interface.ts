@@ -10,16 +10,11 @@ export let RENEW_CLIENT_SESSION_REQUEST_BODY: MessageDescriptor<RenewClientSessi
 };
 
 export interface RenewClientSessionResponse {
-  signedSession?: string,
 }
 
 export let RENEW_CLIENT_SESSION_RESPONSE: MessageDescriptor<RenewClientSessionResponse> = {
   name: 'RenewClientSessionResponse',
-  fields: [{
-    name: 'signedSession',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }],
+  fields: [],
 };
 
 export interface CheckCapabilityRequestBody {

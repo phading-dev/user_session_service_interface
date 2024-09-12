@@ -6,11 +6,7 @@
 }, {
   "message": {
     "name": "RenewClientSessionResponse",
-    "fields": [{
-      "name": "signedSession",
-      "type": "string",
-      "index": 1
-    }]
+    "fields": []
   }
 }, {
   "message": {
