@@ -1,4 +1,15 @@
 [{
+  "enum": {
+    "name": "AccountType",
+    "values": [{
+      "name": "PUBLISHER",
+      "value": 1
+    }, {
+      "name": "CONSUMER",
+      "value": 2
+    }]
+  }
+}, {
   "message": {
     "name": "CreateClientSessionRequestBody",
     "fields": [{
@@ -9,6 +20,10 @@
       "name": "accountId",
       "type": "string",
       "index": 2
+    }, {
+      "name": "accountType",
+      "type": "AccountType",
+      "index": 3
     }]
   }
 }, {

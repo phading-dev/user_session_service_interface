@@ -1,10 +1,27 @@
-import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
+import { EnumDescriptor, PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 import { UserSession, USER_SESSION } from './user_session';
 import { NodeRemoteCallDescriptor } from '@selfage/service_descriptor';
+
+export enum AccountType {
+  PUBLISHER = 1,
+  CONSUMER = 2,
+}
+
+export let ACCOUNT_TYPE: EnumDescriptor<AccountType> = {
+  name: 'AccountType',
+  values: [{
+    name: 'PUBLISHER',
+    value: 1,
+  }, {
+    name: 'CONSUMER',
+    value: 2,
+  }]
+}
 
 export interface CreateClientSessionRequestBody {
   userId?: string,
   accountId?: string,
+  accountType?: AccountType,
 }
 
 export let CREATE_CLIENT_SESSION_REQUEST_BODY: MessageDescriptor<CreateClientSessionRequestBody> = {
@@ -17,6 +34,10 @@ export let CREATE_CLIENT_SESSION_REQUEST_BODY: MessageDescriptor<CreateClientSes
     name: 'accountId',
     index: 2,
     primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'accountType',
+    index: 3,
+    enumType: ACCOUNT_TYPE,
   }],
 };
 
