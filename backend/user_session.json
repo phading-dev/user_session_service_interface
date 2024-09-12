@@ -1,6 +1,6 @@
 [{
   "message": {
-    "name": "PlainSession",
+    "name": "UserSession",
     "fields": [{
       "name": "sessionId",
       "type": "string",

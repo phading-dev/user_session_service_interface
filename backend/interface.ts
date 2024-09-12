@@ -1,6 +1,5 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
-import { ClientSession, CLIENT_SESSION } from '../client_session';
-import { PlainSession, PLAIN_SESSION } from './plain_session';
+import { UserSession, USER_SESSION } from './user_session';
 import { NodeRemoteCallDescriptor } from '@selfage/service_descriptor';
 
 export interface CreateClientSessionRequestBody {
@@ -35,7 +34,7 @@ export let CREATE_CLIENT_SESSION_RESPONSE: MessageDescriptor<CreateClientSession
 };
 
 export interface ExchangeSessionAndCheckCapabilityRequestBody {
-  clientSession?: ClientSession,
+  signedSession?: string,
   checkCanConsumeShows?: boolean,
   checkCanPublishShows?: boolean,
 }
@@ -43,9 +42,9 @@ export interface ExchangeSessionAndCheckCapabilityRequestBody {
 export let EXCHANGE_SESSION_AND_CHECK_CAPABILITY_REQUEST_BODY: MessageDescriptor<ExchangeSessionAndCheckCapabilityRequestBody> = {
   name: 'ExchangeSessionAndCheckCapabilityRequestBody',
   fields: [{
-    name: 'clientSession',
+    name: 'signedSession',
     index: 1,
-    messageType: CLIENT_SESSION,
+    primitiveType: PrimitiveType.STRING,
   }, {
     name: 'checkCanConsumeShows',
     index: 2,
@@ -58,7 +57,7 @@ export let EXCHANGE_SESSION_AND_CHECK_CAPABILITY_REQUEST_BODY: MessageDescriptor
 };
 
 export interface ExchangeSessionAndCheckCapabilityResponse {
-  plainSession?: PlainSession,
+  userSession?: UserSession,
   canConsumeShows?: boolean,
   canPublishShows?: boolean,
 }
@@ -66,9 +65,9 @@ export interface ExchangeSessionAndCheckCapabilityResponse {
 export let EXCHANGE_SESSION_AND_CHECK_CAPABILITY_RESPONSE: MessageDescriptor<ExchangeSessionAndCheckCapabilityResponse> = {
   name: 'ExchangeSessionAndCheckCapabilityResponse',
   fields: [{
-    name: 'plainSession',
+    name: 'userSession',
     index: 1,
-    messageType: PLAIN_SESSION,
+    messageType: USER_SESSION,
   }, {
     name: 'canConsumeShows',
     index: 2,

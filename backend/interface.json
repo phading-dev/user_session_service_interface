@@ -24,9 +24,8 @@
   "message": {
     "name": "ExchangeSessionAndCheckCapabilityRequestBody",
     "fields": [{
-      "name": "clientSession",
-      "type": "ClientSession",
-      "import": "./client_session",
+      "name": "signedSession",
+      "type": "string",
       "index": 1
     }, {
       "name": "checkCanConsumeShows",
@@ -42,9 +41,9 @@
   "message": {
     "name": "ExchangeSessionAndCheckCapabilityResponse",
     "fields": [{
-      "name": "plainSession",
-      "type": "PlainSession",
-      "import": "./backend/plain_session",
+      "name": "userSession",
+      "type": "UserSession",
+      "import": "./backend/user_session",
       "index": 1
     }, {
       "name": "canConsumeShows",

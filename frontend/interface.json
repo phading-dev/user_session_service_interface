@@ -45,21 +45,13 @@
       "name": "CheckCapability",
       "path": "/CheckCapability",
       "body": "CheckCapabilityRequestBody",
-      "auth": {
-        "key": "auth",
-        "type": "ClientSession",
-        "import": "./client_session"
-      },
+      "sessionKey": "sk",
       "response": "CheckCapabilityResponse"
     }, {
       "name": "RenewClientSession",
       "path": "/RenewClientSession",
       "body": "RenewClientSessionRequestBody",
-      "auth": {
-        "key": "auth",
-        "type": "ClientSession",
-        "import": "./client_session"
-      },
+      "sessionKey": "sk",
       "response": "RenewClientSessionResponse"
     }],
     "outputClient": "./frontend/client",

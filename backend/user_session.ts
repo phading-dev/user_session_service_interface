@@ -1,13 +1,13 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 
-export interface PlainSession {
+export interface UserSession {
   sessionId?: string,
   userId?: string,
   accountId?: string,
 }
 
-export let PLAIN_SESSION: MessageDescriptor<PlainSession> = {
-  name: 'PlainSession',
+export let USER_SESSION: MessageDescriptor<UserSession> = {
+  name: 'UserSession',
   fields: [{
     name: 'sessionId',
     index: 1,

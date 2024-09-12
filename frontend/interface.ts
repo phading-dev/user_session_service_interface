@@ -1,5 +1,4 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
-import { CLIENT_SESSION } from '../client_session';
 import { WebRemoteCallDescriptor } from '@selfage/service_descriptor';
 
 export interface RenewClientSessionRequestBody {
@@ -65,10 +64,7 @@ export let CHECK_CAPABILITY: WebRemoteCallDescriptor = {
   body: {
     messageType: CHECK_CAPABILITY_REQUEST_BODY,
   },
-  auth: {
-    key: "auth",
-    type: CLIENT_SESSION
-  },
+  sessionKey: "sk",
   response: {
     messageType: CHECK_CAPABILITY_RESPONSE,
   },
@@ -80,10 +76,7 @@ export let RENEW_CLIENT_SESSION: WebRemoteCallDescriptor = {
   body: {
     messageType: RENEW_CLIENT_SESSION_REQUEST_BODY,
   },
-  auth: {
-    key: "auth",
-    type: CLIENT_SESSION
-  },
+  sessionKey: "sk",
   response: {
     messageType: RENEW_CLIENT_SESSION_RESPONSE,
   },
