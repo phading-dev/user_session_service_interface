@@ -42,11 +42,16 @@ export let CREATE_CLIENT_SESSION_REQUEST_BODY: MessageDescriptor<CreateClientSes
 };
 
 export interface CreateClientSessionResponse {
+  signedSession?: string,
 }
 
 export let CREATE_CLIENT_SESSION_RESPONSE: MessageDescriptor<CreateClientSessionResponse> = {
   name: 'CreateClientSessionResponse',
-  fields: [],
+  fields: [{
+    name: 'signedSession',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
 };
 
 export interface ExchangeSessionAndCheckCapabilityRequestBody {
