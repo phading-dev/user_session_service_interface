@@ -3,17 +3,17 @@ import { UserSession, USER_SESSION } from './user_session';
 import { NodeRemoteCallDescriptor } from '@selfage/service_descriptor';
 
 export enum AccountType {
-  PUBLISHER = 1,
-  CONSUMER = 2,
+  CONSUMER = 1,
+  PUBLISHER = 2,
 }
 
 export let ACCOUNT_TYPE: EnumDescriptor<AccountType> = {
   name: 'AccountType',
   values: [{
-    name: 'PUBLISHER',
+    name: 'CONSUMER',
     value: 1,
   }, {
-    name: 'CONSUMER',
+    name: 'PUBLISHER',
     value: 2,
   }]
 }

@@ -2,10 +2,10 @@
   "enum": {
     "name": "AccountType",
     "values": [{
-      "name": "PUBLISHER",
+      "name": "CONSUMER",
       "value": 1
     }, {
-      "name": "CONSUMER",
+      "name": "PUBLISHER",
       "value": 2
     }]
   }
