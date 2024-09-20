@@ -1,19 +1,19 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 import { WebRemoteCallDescriptor } from '@selfage/service_descriptor';
 
-export interface RenewClientSessionRequestBody {
+export interface RenewSessionRequestBody {
 }
 
-export let RENEW_CLIENT_SESSION_REQUEST_BODY: MessageDescriptor<RenewClientSessionRequestBody> = {
-  name: 'RenewClientSessionRequestBody',
+export let RENEW_SESSION_REQUEST_BODY: MessageDescriptor<RenewSessionRequestBody> = {
+  name: 'RenewSessionRequestBody',
   fields: [],
 };
 
-export interface RenewClientSessionResponse {
+export interface RenewSessionResponse {
 }
 
-export let RENEW_CLIENT_SESSION_RESPONSE: MessageDescriptor<RenewClientSessionResponse> = {
-  name: 'RenewClientSessionResponse',
+export let RENEW_SESSION_RESPONSE: MessageDescriptor<RenewSessionResponse> = {
+  name: 'RenewSessionResponse',
   fields: [],
 };
 
@@ -65,14 +65,14 @@ export let CHECK_CAPABILITY: WebRemoteCallDescriptor = {
   },
 }
 
-export let RENEW_CLIENT_SESSION: WebRemoteCallDescriptor = {
-  name: "RenewClientSession",
-  path: "/RenewClientSession",
+export let RENEW_SESSION: WebRemoteCallDescriptor = {
+  name: "RenewSession",
+  path: "/RenewSession",
   body: {
-    messageType: RENEW_CLIENT_SESSION_REQUEST_BODY,
+    messageType: RENEW_SESSION_REQUEST_BODY,
   },
   sessionKey: "sk",
   response: {
-    messageType: RENEW_CLIENT_SESSION_RESPONSE,
+    messageType: RENEW_SESSION_RESPONSE,
   },
 }

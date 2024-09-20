@@ -1,4 +1,4 @@
-import { CheckCapabilityRequestBody, CHECK_CAPABILITY, CheckCapabilityResponse, RenewClientSessionRequestBody, RENEW_CLIENT_SESSION, RenewClientSessionResponse } from './interface';
+import { CheckCapabilityRequestBody, CHECK_CAPABILITY, CheckCapabilityResponse, RenewSessionRequestBody, RENEW_SESSION, RenewSessionResponse } from './interface';
 import { WebHandlerInterface } from '@selfage/service_descriptor/handler_interface';
 
 export abstract class CheckCapabilityHandlerInterface implements WebHandlerInterface {
@@ -10,11 +10,11 @@ export abstract class CheckCapabilityHandlerInterface implements WebHandlerInter
   ): Promise<CheckCapabilityResponse>;
 }
 
-export abstract class RenewClientSessionHandlerInterface implements WebHandlerInterface {
-  public descriptor = RENEW_CLIENT_SESSION;
+export abstract class RenewSessionHandlerInterface implements WebHandlerInterface {
+  public descriptor = RENEW_SESSION;
   public abstract handle(
     loggingPrefix: string,
-    body: RenewClientSessionRequestBody,
+    body: RenewSessionRequestBody,
     sessionStr: string,
-  ): Promise<RenewClientSessionResponse>;
+  ): Promise<RenewSessionResponse>;
 }

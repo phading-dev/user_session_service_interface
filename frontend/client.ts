@@ -1,4 +1,4 @@
-import { CheckCapabilityRequestBody, CheckCapabilityResponse, CHECK_CAPABILITY, RenewClientSessionRequestBody, RenewClientSessionResponse, RENEW_CLIENT_SESSION } from './interface';
+import { CheckCapabilityRequestBody, CheckCapabilityResponse, CHECK_CAPABILITY, RenewSessionRequestBody, RenewSessionResponse, RENEW_SESSION } from './interface';
 import { WebClientInterface, WebClientOptions } from '@selfage/service_descriptor/client_interface';
 
 export function checkCapability(
@@ -15,14 +15,14 @@ export function checkCapability(
   );
 }
 
-export function renewClientSession(
+export function renewSession(
   client: WebClientInterface,
-  body: RenewClientSessionRequestBody,
+  body: RenewSessionRequestBody,
   options?: WebClientOptions,
-): Promise<RenewClientSessionResponse> {
+): Promise<RenewSessionResponse> {
   return client.send(
     {
-      descriptor: RENEW_CLIENT_SESSION,
+      descriptor: RENEW_SESSION,
       body,
     },
     options,

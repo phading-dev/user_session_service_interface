@@ -1,7 +1,7 @@
 - message:
-    name: RenewClientSessionRequestBody
+    name: RenewSessionRequestBody
 - message:
-    name: RenewClientSessionResponse
+    name: RenewSessionResponse
 - message:
     name: CheckCapabilityRequestBody
     fields:
@@ -28,10 +28,10 @@
         body: CheckCapabilityRequestBody
         sessionKey: sk
         response: CheckCapabilityResponse
-      - name: RenewClientSession
-        path: /RenewClientSession
-        body: RenewClientSessionRequestBody
+      - name: RenewSession
+        path: /RenewSession
+        body: RenewSessionRequestBody
         sessionKey: sk
-        response: RenewClientSessionResponse
+        response: RenewSessionResponse
     outputClient: ./frontend/client
     outputHandler: ./frontend/handler
