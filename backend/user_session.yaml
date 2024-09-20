@@ -1,0 +1,12 @@
+- message:
+    name: UserSession
+    fields:
+      - name: sessionId
+        type: string
+        index: 1
+      - name: userId
+        type: string
+        index: 2
+      - name: accountId
+        type: string
+        index: 3

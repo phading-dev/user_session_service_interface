@@ -18,14 +18,14 @@ export let ACCOUNT_TYPE: EnumDescriptor<AccountType> = {
   }]
 }
 
-export interface CreateClientSessionRequestBody {
+export interface CreateSessionRequestBody {
   userId?: string,
   accountId?: string,
   accountType?: AccountType,
 }
 
-export let CREATE_CLIENT_SESSION_REQUEST_BODY: MessageDescriptor<CreateClientSessionRequestBody> = {
-  name: 'CreateClientSessionRequestBody',
+export let CREATE_SESSION_REQUEST_BODY: MessageDescriptor<CreateSessionRequestBody> = {
+  name: 'CreateSessionRequestBody',
   fields: [{
     name: 'userId',
     index: 1,
@@ -41,12 +41,12 @@ export let CREATE_CLIENT_SESSION_REQUEST_BODY: MessageDescriptor<CreateClientSes
   }],
 };
 
-export interface CreateClientSessionResponse {
+export interface CreateSessionResponse {
   signedSession?: string,
 }
 
-export let CREATE_CLIENT_SESSION_RESPONSE: MessageDescriptor<CreateClientSessionResponse> = {
-  name: 'CreateClientSessionResponse',
+export let CREATE_SESSION_RESPONSE: MessageDescriptor<CreateSessionResponse> = {
+  name: 'CreateSessionResponse',
   fields: [{
     name: 'signedSession',
     index: 1,
@@ -100,14 +100,14 @@ export let EXCHANGE_SESSION_AND_CHECK_CAPABILITY_RESPONSE: MessageDescriptor<Exc
   }],
 };
 
-export let CREATE_CLIENT_SESSION: NodeRemoteCallDescriptor = {
-  name: "CreateClientSession",
-  path: "/CreateClientSession",
+export let CREATE_SESSION: NodeRemoteCallDescriptor = {
+  name: "CreateSession",
+  path: "/CreateSession",
   body: {
-    messageType: CREATE_CLIENT_SESSION_REQUEST_BODY,
+    messageType: CREATE_SESSION_REQUEST_BODY,
   },
   response: {
-    messageType: CREATE_CLIENT_SESSION_RESPONSE,
+    messageType: CREATE_SESSION_RESPONSE,
   },
 }
 

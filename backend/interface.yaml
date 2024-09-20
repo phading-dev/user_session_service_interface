@@ -1,0 +1,63 @@
+- enum:
+    name: AccountType
+    values:
+      - name: CONSUMER
+        value: 1
+      - name: PUBLISHER
+        value: 2
+- message:
+    name: CreateSessionRequestBody
+    fields:
+      - name: userId
+        type: string
+        index: 1
+      - name: accountId
+        type: string
+        index: 2
+      - name: accountType
+        type: AccountType
+        index: 3
+- message:
+    name: CreateSessionResponse
+    fields:
+      - name: signedSession
+        type: string
+        index: 1
+- message:
+    name: ExchangeSessionAndCheckCapabilityRequestBody
+    fields:
+      - name: signedSession
+        type: string
+        index: 1
+      - name: checkCanConsumeShows
+        type: boolean
+        index: 2
+      - name: checkCanPublishShows
+        type: boolean
+        index: 3
+- message:
+    name: ExchangeSessionAndCheckCapabilityResponse
+    fields:
+      - name: userSession
+        type: UserSession
+        import: ./backend/user_session
+        index: 1
+      - name: canConsumeShows
+        type: boolean
+        index: 2
+      - name: canPublishShows
+        type: boolean
+        index: 3
+- nodeService:
+    name: UserSessionBackendService
+    remoteCalls:
+      - name: CreateSession
+        path: /CreateSession
+        body: CreateSessionRequestBody
+        response: CreateSessionResponse
+      - name: ExchangeSessionAndCheckCapability
+        path: /ExchangeSessionAndCheckCapability
+        body: ExchangeSessionAndCheckCapabilityRequestBody
+        response: ExchangeSessionAndCheckCapabilityResponse
+    outputClient: ./backend/client
+    outputHandler: ./backend/handler

@@ -1,14 +1,14 @@
-import { CreateClientSessionRequestBody, CreateClientSessionResponse, CREATE_CLIENT_SESSION, ExchangeSessionAndCheckCapabilityRequestBody, ExchangeSessionAndCheckCapabilityResponse, EXCHANGE_SESSION_AND_CHECK_CAPABILITY } from './interface';
+import { CreateSessionRequestBody, CreateSessionResponse, CREATE_SESSION, ExchangeSessionAndCheckCapabilityRequestBody, ExchangeSessionAndCheckCapabilityResponse, EXCHANGE_SESSION_AND_CHECK_CAPABILITY } from './interface';
 import { NodeClientInterface, NodeClientOptions } from '@selfage/service_descriptor/client_interface';
 
-export function createClientSession(
+export function createSession(
   client: NodeClientInterface,
-  body: CreateClientSessionRequestBody,
+  body: CreateSessionRequestBody,
   options?: NodeClientOptions,
-): Promise<CreateClientSessionResponse> {
+): Promise<CreateSessionResponse> {
   return client.send(
     {
-      descriptor: CREATE_CLIENT_SESSION,
+      descriptor: CREATE_SESSION,
       body,
     },
     options,

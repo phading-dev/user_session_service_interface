@@ -1,0 +1,37 @@
+- message:
+    name: RenewClientSessionRequestBody
+- message:
+    name: RenewClientSessionResponse
+- message:
+    name: CheckCapabilityRequestBody
+    fields:
+      - name: checkCanConsumeShows
+        type: boolean
+        index: 1
+      - name: checkCanPublishShows
+        type: boolean
+        index: 2
+- message:
+    name: CheckCapabilityResponse
+    fields:
+      - name: canConsumeShows
+        type: boolean
+        index: 1
+      - name: canPublishShows
+        type: boolean
+        index: 2
+- webService:
+    name: UserSessionFrontendService
+    remoteCalls:
+      - name: CheckCapability
+        path: /CheckCapability
+        body: CheckCapabilityRequestBody
+        sessionKey: sk
+        response: CheckCapabilityResponse
+      - name: RenewClientSession
+        path: /RenewClientSession
+        body: RenewClientSessionRequestBody
+        sessionKey: sk
+        response: RenewClientSessionResponse
+    outputClient: ./frontend/client
+    outputHandler: ./frontend/handler
