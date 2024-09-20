@@ -1,6 +1,6 @@
 {
   "name": "@phading/user_session_service_interface",
-  "version": "0.8.8",
+  "version": "0.8.9",
   "description": "The web and backend interfaces of UserSessionService.",
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
   "files": [
     "**/*.d.ts",
     "**/*.js",
-    "**/*.json"
+    "**/*.yaml"
   ],
   "devDependencies": {
     "@selfage/generator_cli": "^3.0.2",
