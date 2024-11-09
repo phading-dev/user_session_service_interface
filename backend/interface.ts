@@ -1,5 +1,4 @@
 import { EnumDescriptor, PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
-import { UserSession, USER_SESSION } from './user_session';
 import { NodeRemoteCallDescriptor } from '@selfage/service_descriptor';
 
 export enum AccountType {
@@ -78,7 +77,8 @@ export let EXCHANGE_SESSION_AND_CHECK_CAPABILITY_REQUEST_BODY: MessageDescriptor
 };
 
 export interface ExchangeSessionAndCheckCapabilityResponse {
-  userSession?: UserSession,
+  userId?: string,
+  accountId?: string,
   canConsumeShows?: boolean,
   canPublishShows?: boolean,
 }
@@ -86,16 +86,20 @@ export interface ExchangeSessionAndCheckCapabilityResponse {
 export let EXCHANGE_SESSION_AND_CHECK_CAPABILITY_RESPONSE: MessageDescriptor<ExchangeSessionAndCheckCapabilityResponse> = {
   name: 'ExchangeSessionAndCheckCapabilityResponse',
   fields: [{
-    name: 'userSession',
+    name: 'userId',
     index: 1,
-    messageType: USER_SESSION,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'accountId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
   }, {
     name: 'canConsumeShows',
-    index: 2,
+    index: 3,
     primitiveType: PrimitiveType.BOOLEAN,
   }, {
     name: 'canPublishShows',
-    index: 3,
+    index: 4,
     primitiveType: PrimitiveType.BOOLEAN,
   }],
 };
