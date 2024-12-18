@@ -51,7 +51,7 @@
         type: boolean
         index: 4
 - nodeService:
-    name: UserSessionBackendService
+    name: UserSessionNodeService
     remoteCalls:
       - name: CreateSession
         path: /CreateSession
@@ -61,5 +61,5 @@
         path: /ExchangeSessionAndCheckCapability
         body: ExchangeSessionAndCheckCapabilityRequestBody
         response: ExchangeSessionAndCheckCapabilityResponse
-    outputClient: ./backend/client
-    outputHandler: ./backend/handler
+    outputClient: ./node/client
+    outputHandler: ./node/handler

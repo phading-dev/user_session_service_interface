@@ -21,7 +21,7 @@
         type: boolean
         index: 2
 - webService:
-    name: UserSessionFrontendService
+    name: UserSessionWebService
     remoteCalls:
       - name: CheckCapability
         path: /CheckCapability
@@ -33,5 +33,5 @@
         body: RenewSessionRequestBody
         sessionKey: sk
         response: RenewSessionResponse
-    outputClient: ./frontend/client
-    outputHandler: ./frontend/handler
+    outputClient: ./web/client
+    outputHandler: ./web/handler
