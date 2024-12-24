@@ -1,37 +1,37 @@
-- message:
-    name: RenewSessionRequestBody
-- message:
-    name: RenewSessionResponse
-- message:
-    name: CheckCapabilityRequestBody
-    fields:
-      - name: checkCanConsumeShows
-        type: boolean
-        index: 1
-      - name: checkCanPublishShows
-        type: boolean
-        index: 2
-- message:
-    name: CheckCapabilityResponse
-    fields:
-      - name: canConsumeShows
-        type: boolean
-        index: 1
-      - name: canPublishShows
-        type: boolean
-        index: 2
-- webService:
-    name: UserSessionWebService
-    remoteCalls:
-      - name: CheckCapability
-        path: /CheckCapability
-        body: CheckCapabilityRequestBody
-        sessionKey: sk
-        response: CheckCapabilityResponse
-      - name: RenewSession
-        path: /RenewSession
-        body: RenewSessionRequestBody
-        sessionKey: sk
-        response: RenewSessionResponse
-    outputClient: ./web/client
-    outputHandler: ./web/handler
+- kind: Message
+  name: RenewSessionRequestBody
+- kind: Message
+  name: RenewSessionResponse
+- kind: Message
+  name: CheckCapabilityRequestBody
+  fields:
+    - name: checkCanConsumeShows
+      type: boolean
+      index: 1
+    - name: checkCanPublishShows
+      type: boolean
+      index: 2
+- kind: Message
+  name: CheckCapabilityResponse
+  fields:
+    - name: canConsumeShows
+      type: boolean
+      index: 1
+    - name: canPublishShows
+      type: boolean
+      index: 2
+- kind: WebService
+  name: UserSessionWebService
+  remoteCalls:
+    - name: CheckCapability
+      path: /CheckCapability
+      body: CheckCapabilityRequestBody
+      sessionKey: sk
+      response: CheckCapabilityResponse
+    - name: RenewSession
+      path: /RenewSession
+      body: RenewSessionRequestBody
+      sessionKey: sk
+      response: RenewSessionResponse
+  outputClient: ./web/client
+  outputHandler: ./web/handler
