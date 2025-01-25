@@ -1,0 +1,30 @@
+- kind: Message
+  name: Capabilities
+  fields:
+    - name: canConsumeShows
+      type: boolean
+      index: 1
+    - name: canPublishShows
+      type: boolean
+      index: 2
+    - name: canBeBilled
+      type: boolean
+      index: 3
+    - name: canEarn
+      type: boolean
+      index: 4
+- kind: Message
+  name: CapabilitiesMask
+  fields:
+    - name: checkCanConsumeShows
+      type: boolean
+      index: 1
+    - name: checkCanPublishShows
+      type: boolean
+      index: 2
+    - name: checkCanBeBilled
+      type: boolean
+      index: 3
+    - name: checkCanEarn
+      type: boolean
+      index: 4

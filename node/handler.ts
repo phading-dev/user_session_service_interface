@@ -1,4 +1,4 @@
-import { CreateSessionRequestBody, CREATE_SESSION, CreateSessionResponse, ExchangeSessionAndCheckCapabilityRequestBody, EXCHANGE_SESSION_AND_CHECK_CAPABILITY, ExchangeSessionAndCheckCapabilityResponse } from './interface';
+import { CreateSessionRequestBody, CREATE_SESSION, CreateSessionResponse, UpdateCapabilitiesRequestBody, UPDATE_CAPABILITIES, UpdateCapabilitiesResponse, ExchangeSessionAndCheckCapabilityRequestBody, EXCHANGE_SESSION_AND_CHECK_CAPABILITY, ExchangeSessionAndCheckCapabilityResponse } from './interface';
 import { NodeHandlerInterface } from '@selfage/service_descriptor/handler_interface';
 
 export abstract class CreateSessionHandlerInterface implements NodeHandlerInterface {
@@ -7,6 +7,14 @@ export abstract class CreateSessionHandlerInterface implements NodeHandlerInterf
     loggingPrefix: string,
     body: CreateSessionRequestBody,
   ): Promise<CreateSessionResponse>;
+}
+
+export abstract class UpdateCapabilitiesHandlerInterface implements NodeHandlerInterface {
+  public descriptor = UPDATE_CAPABILITIES;
+  public abstract handle(
+    loggingPrefix: string,
+    body: UpdateCapabilitiesRequestBody,
+  ): Promise<UpdateCapabilitiesResponse>;
 }
 
 export abstract class ExchangeSessionAndCheckCapabilityHandlerInterface implements NodeHandlerInterface {

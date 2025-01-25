@@ -5,21 +5,17 @@
 - kind: Message
   name: CheckCapabilityRequestBody
   fields:
-    - name: checkCanConsumeShows
-      type: boolean
+    - name: capabilitiesMask
+      type: CapabilitiesMask
+      import: ./capabilities
       index: 1
-    - name: checkCanPublishShows
-      type: boolean
-      index: 2
 - kind: Message
   name: CheckCapabilityResponse
   fields:
-    - name: canConsumeShows
-      type: boolean
+    - name: capabilities
+      type: Capabilities
+      import: ./capabilities
       index: 1
-    - name: canPublishShows
-      type: boolean
-      index: 2
 - kind: WebService
   name: UserSessionWebService
   remoteCalls:

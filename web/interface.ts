@@ -1,4 +1,5 @@
-import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
+import { MessageDescriptor } from '@selfage/message/descriptor';
+import { CapabilitiesMask, CAPABILITIES_MASK, Capabilities, CAPABILITIES } from '../capabilities';
 import { WebRemoteCallDescriptor } from '@selfage/service_descriptor';
 
 export interface RenewSessionRequestBody {
@@ -18,38 +19,28 @@ export let RENEW_SESSION_RESPONSE: MessageDescriptor<RenewSessionResponse> = {
 };
 
 export interface CheckCapabilityRequestBody {
-  checkCanConsumeShows?: boolean,
-  checkCanPublishShows?: boolean,
+  capabilitiesMask?: CapabilitiesMask,
 }
 
 export let CHECK_CAPABILITY_REQUEST_BODY: MessageDescriptor<CheckCapabilityRequestBody> = {
   name: 'CheckCapabilityRequestBody',
   fields: [{
-    name: 'checkCanConsumeShows',
+    name: 'capabilitiesMask',
     index: 1,
-    primitiveType: PrimitiveType.BOOLEAN,
-  }, {
-    name: 'checkCanPublishShows',
-    index: 2,
-    primitiveType: PrimitiveType.BOOLEAN,
+    messageType: CAPABILITIES_MASK,
   }],
 };
 
 export interface CheckCapabilityResponse {
-  canConsumeShows?: boolean,
-  canPublishShows?: boolean,
+  capabilities?: Capabilities,
 }
 
 export let CHECK_CAPABILITY_RESPONSE: MessageDescriptor<CheckCapabilityResponse> = {
   name: 'CheckCapabilityResponse',
   fields: [{
-    name: 'canConsumeShows',
+    name: 'capabilities',
     index: 1,
-    primitiveType: PrimitiveType.BOOLEAN,
-  }, {
-    name: 'canPublishShows',
-    index: 2,
-    primitiveType: PrimitiveType.BOOLEAN,
+    messageType: CAPABILITIES,
   }],
 };
 

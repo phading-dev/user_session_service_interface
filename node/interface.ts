@@ -1,26 +1,12 @@
-import { EnumDescriptor, PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
+import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
+import { Capabilities, CAPABILITIES, CapabilitiesMask, CAPABILITIES_MASK } from '../capabilities';
 import { NodeRemoteCallDescriptor } from '@selfage/service_descriptor';
-
-export enum AccountType {
-  CONSUMER = 1,
-  PUBLISHER = 2,
-}
-
-export let ACCOUNT_TYPE: EnumDescriptor<AccountType> = {
-  name: 'AccountType',
-  values: [{
-    name: 'CONSUMER',
-    value: 1,
-  }, {
-    name: 'PUBLISHER',
-    value: 2,
-  }]
-}
 
 export interface CreateSessionRequestBody {
   userId?: string,
   accountId?: string,
-  accountType?: AccountType,
+  version?: number,
+  capabilities?: Capabilities,
 }
 
 export let CREATE_SESSION_REQUEST_BODY: MessageDescriptor<CreateSessionRequestBody> = {
@@ -34,9 +20,13 @@ export let CREATE_SESSION_REQUEST_BODY: MessageDescriptor<CreateSessionRequestBo
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'accountType',
+    name: 'version',
     index: 3,
-    enumType: ACCOUNT_TYPE,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'capabilities',
+    index: 4,
+    messageType: CAPABILITIES,
   }],
 };
 
@@ -53,10 +43,40 @@ export let CREATE_SESSION_RESPONSE: MessageDescriptor<CreateSessionResponse> = {
   }],
 };
 
+export interface UpdateCapabilitiesRequestBody {
+  accountId?: string,
+  version?: number,
+  capabilities?: Capabilities,
+}
+
+export let UPDATE_CAPABILITIES_REQUEST_BODY: MessageDescriptor<UpdateCapabilitiesRequestBody> = {
+  name: 'UpdateCapabilitiesRequestBody',
+  fields: [{
+    name: 'accountId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'version',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'capabilities',
+    index: 3,
+    messageType: CAPABILITIES,
+  }],
+};
+
+export interface UpdateCapabilitiesResponse {
+}
+
+export let UPDATE_CAPABILITIES_RESPONSE: MessageDescriptor<UpdateCapabilitiesResponse> = {
+  name: 'UpdateCapabilitiesResponse',
+  fields: [],
+};
+
 export interface ExchangeSessionAndCheckCapabilityRequestBody {
   signedSession?: string,
-  checkCanConsumeShows?: boolean,
-  checkCanPublishShows?: boolean,
+  capabilitiesMask?: CapabilitiesMask,
 }
 
 export let EXCHANGE_SESSION_AND_CHECK_CAPABILITY_REQUEST_BODY: MessageDescriptor<ExchangeSessionAndCheckCapabilityRequestBody> = {
@@ -66,21 +86,16 @@ export let EXCHANGE_SESSION_AND_CHECK_CAPABILITY_REQUEST_BODY: MessageDescriptor
     index: 1,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'checkCanConsumeShows',
+    name: 'capabilitiesMask',
     index: 2,
-    primitiveType: PrimitiveType.BOOLEAN,
-  }, {
-    name: 'checkCanPublishShows',
-    index: 3,
-    primitiveType: PrimitiveType.BOOLEAN,
+    messageType: CAPABILITIES_MASK,
   }],
 };
 
 export interface ExchangeSessionAndCheckCapabilityResponse {
   userId?: string,
   accountId?: string,
-  canConsumeShows?: boolean,
-  canPublishShows?: boolean,
+  capabilities?: Capabilities,
 }
 
 export let EXCHANGE_SESSION_AND_CHECK_CAPABILITY_RESPONSE: MessageDescriptor<ExchangeSessionAndCheckCapabilityResponse> = {
@@ -94,13 +109,9 @@ export let EXCHANGE_SESSION_AND_CHECK_CAPABILITY_RESPONSE: MessageDescriptor<Exc
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'canConsumeShows',
+    name: 'capabilities',
     index: 3,
-    primitiveType: PrimitiveType.BOOLEAN,
-  }, {
-    name: 'canPublishShows',
-    index: 4,
-    primitiveType: PrimitiveType.BOOLEAN,
+    messageType: CAPABILITIES,
   }],
 };
 
@@ -112,6 +123,17 @@ export let CREATE_SESSION: NodeRemoteCallDescriptor = {
   },
   response: {
     messageType: CREATE_SESSION_RESPONSE,
+  },
+}
+
+export let UPDATE_CAPABILITIES: NodeRemoteCallDescriptor = {
+  name: "UpdateCapabilities",
+  path: "/UpdateCapabilities",
+  body: {
+    messageType: UPDATE_CAPABILITIES_REQUEST_BODY,
+  },
+  response: {
+    messageType: UPDATE_CAPABILITIES_RESPONSE,
   },
 }
 

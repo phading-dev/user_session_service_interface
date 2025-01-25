@@ -1,10 +1,3 @@
-- kind: Enum
-  name: AccountType
-  values:
-    - name: CONSUMER
-      value: 1
-    - name: PUBLISHER
-      value: 2
 - kind: Message
   name: CreateSessionRequestBody
   fields:
@@ -14,9 +7,13 @@
     - name: accountId
       type: string
       index: 2
-    - name: accountType
-      type: AccountType
+    - name: version
+      type: number
       index: 3
+    - name: capabilities
+      type: Capabilities
+      import: ./capabilities
+      index: 4
 - kind: Message
   name: CreateSessionResponse
   fields:
@@ -24,17 +21,30 @@
       type: string
       index: 1
 - kind: Message
+  name: UpdateCapabilitiesRequestBody
+  fields:
+    - name: accountId
+      type: string
+      index: 1
+    - name: version
+      type: number
+      index: 2
+    - name: capabilities
+      type: Capabilities
+      import: ./capabilities
+      index: 3
+- kind: Message
+  name: UpdateCapabilitiesResponse
+- kind: Message
   name: ExchangeSessionAndCheckCapabilityRequestBody
   fields:
     - name: signedSession
       type: string
       index: 1
-    - name: checkCanConsumeShows
-      type: boolean
+    - name: capabilitiesMask
+      type: CapabilitiesMask
+      import: ./capabilities
       index: 2
-    - name: checkCanPublishShows
-      type: boolean
-      index: 3
 - kind: Message
   name: ExchangeSessionAndCheckCapabilityResponse
   fields:
@@ -44,12 +54,10 @@
     - name: accountId
       type: string
       index: 2
-    - name: canConsumeShows
-      type: boolean
+    - name: capabilities
+      type: Capabilities
+      import: ./capabilities
       index: 3
-    - name: canPublishShows
-      type: boolean
-      index: 4
 - kind: NodeService
   name: UserSessionNodeService
   remoteCalls:
@@ -57,6 +65,10 @@
       path: /CreateSession
       body: CreateSessionRequestBody
       response: CreateSessionResponse
+    - name: UpdateCapabilities
+      path: /UpdateCapabilities
+      body: UpdateCapabilitiesRequestBody
+      response: UpdateCapabilitiesResponse
     - name: ExchangeSessionAndCheckCapability
       path: /ExchangeSessionAndCheckCapability
       body: ExchangeSessionAndCheckCapabilityRequestBody
