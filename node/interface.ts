@@ -5,7 +5,7 @@ import { NodeRemoteCallDescriptor } from '@selfage/service_descriptor';
 export interface CreateSessionRequestBody {
   userId?: string,
   accountId?: string,
-  version?: number,
+  capabilitiesVersion?: number,
   capabilities?: Capabilities,
 }
 
@@ -20,7 +20,7 @@ export let CREATE_SESSION_REQUEST_BODY: MessageDescriptor<CreateSessionRequestBo
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'version',
+    name: 'capabilitiesVersion',
     index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }, {
@@ -43,20 +43,20 @@ export let CREATE_SESSION_RESPONSE: MessageDescriptor<CreateSessionResponse> = {
   }],
 };
 
-export interface UpdateCapabilitiesRequestBody {
+export interface UpdateAccountCapabilitiesRequestBody {
   accountId?: string,
-  version?: number,
+  capabilitiesVersion?: number,
   capabilities?: Capabilities,
 }
 
-export let UPDATE_CAPABILITIES_REQUEST_BODY: MessageDescriptor<UpdateCapabilitiesRequestBody> = {
-  name: 'UpdateCapabilitiesRequestBody',
+export let UPDATE_ACCOUNT_CAPABILITIES_REQUEST_BODY: MessageDescriptor<UpdateAccountCapabilitiesRequestBody> = {
+  name: 'UpdateAccountCapabilitiesRequestBody',
   fields: [{
     name: 'accountId',
     index: 1,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'version',
+    name: 'capabilitiesVersion',
     index: 2,
     primitiveType: PrimitiveType.NUMBER,
   }, {
@@ -66,11 +66,11 @@ export let UPDATE_CAPABILITIES_REQUEST_BODY: MessageDescriptor<UpdateCapabilitie
   }],
 };
 
-export interface UpdateCapabilitiesResponse {
+export interface UpdateAccountCapabilitiesResponse {
 }
 
-export let UPDATE_CAPABILITIES_RESPONSE: MessageDescriptor<UpdateCapabilitiesResponse> = {
-  name: 'UpdateCapabilitiesResponse',
+export let UPDATE_ACCOUNT_CAPABILITIES_RESPONSE: MessageDescriptor<UpdateAccountCapabilitiesResponse> = {
+  name: 'UpdateAccountCapabilitiesResponse',
   fields: [],
 };
 
@@ -126,14 +126,14 @@ export let CREATE_SESSION: NodeRemoteCallDescriptor = {
   },
 }
 
-export let UPDATE_CAPABILITIES: NodeRemoteCallDescriptor = {
-  name: "UpdateCapabilities",
-  path: "/UpdateCapabilities",
+export let UPDATE_ACCOUNT_CAPABILITIES: NodeRemoteCallDescriptor = {
+  name: "UpdateAccountCapabilities",
+  path: "/UpdateAccountCapabilities",
   body: {
-    messageType: UPDATE_CAPABILITIES_REQUEST_BODY,
+    messageType: UPDATE_ACCOUNT_CAPABILITIES_REQUEST_BODY,
   },
   response: {
-    messageType: UPDATE_CAPABILITIES_RESPONSE,
+    messageType: UPDATE_ACCOUNT_CAPABILITIES_RESPONSE,
   },
 }
 

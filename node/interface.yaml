@@ -7,7 +7,7 @@
     - name: accountId
       type: string
       index: 2
-    - name: version
+    - name: capabilitiesVersion
       type: number
       index: 3
     - name: capabilities
@@ -21,12 +21,12 @@
       type: string
       index: 1
 - kind: Message
-  name: UpdateCapabilitiesRequestBody
+  name: UpdateAccountCapabilitiesRequestBody
   fields:
     - name: accountId
       type: string
       index: 1
-    - name: version
+    - name: capabilitiesVersion
       type: number
       index: 2
     - name: capabilities
@@ -34,7 +34,7 @@
       import: ./capabilities
       index: 3
 - kind: Message
-  name: UpdateCapabilitiesResponse
+  name: UpdateAccountCapabilitiesResponse
 - kind: Message
   name: ExchangeSessionAndCheckCapabilityRequestBody
   fields:
@@ -65,10 +65,10 @@
       path: /CreateSession
       body: CreateSessionRequestBody
       response: CreateSessionResponse
-    - name: UpdateCapabilities
-      path: /UpdateCapabilities
-      body: UpdateCapabilitiesRequestBody
-      response: UpdateCapabilitiesResponse
+    - name: UpdateAccountCapabilities
+      path: /UpdateAccountCapabilities
+      body: UpdateAccountCapabilitiesRequestBody
+      response: UpdateAccountCapabilitiesResponse
     - name: ExchangeSessionAndCheckCapability
       path: /ExchangeSessionAndCheckCapability
       body: ExchangeSessionAndCheckCapabilityRequestBody

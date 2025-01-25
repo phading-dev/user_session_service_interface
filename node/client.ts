@@ -1,4 +1,4 @@
-import { CreateSessionRequestBody, CreateSessionResponse, CREATE_SESSION, UpdateCapabilitiesRequestBody, UpdateCapabilitiesResponse, UPDATE_CAPABILITIES, ExchangeSessionAndCheckCapabilityRequestBody, ExchangeSessionAndCheckCapabilityResponse, EXCHANGE_SESSION_AND_CHECK_CAPABILITY } from './interface';
+import { CreateSessionRequestBody, CreateSessionResponse, CREATE_SESSION, UpdateAccountCapabilitiesRequestBody, UpdateAccountCapabilitiesResponse, UPDATE_ACCOUNT_CAPABILITIES, ExchangeSessionAndCheckCapabilityRequestBody, ExchangeSessionAndCheckCapabilityResponse, EXCHANGE_SESSION_AND_CHECK_CAPABILITY } from './interface';
 import { NodeClientInterface, NodeClientOptions } from '@selfage/service_descriptor/client_interface';
 
 export function createSession(
@@ -15,14 +15,14 @@ export function createSession(
   );
 }
 
-export function updateCapabilities(
+export function updateAccountCapabilities(
   client: NodeClientInterface,
-  body: UpdateCapabilitiesRequestBody,
+  body: UpdateAccountCapabilitiesRequestBody,
   options?: NodeClientOptions,
-): Promise<UpdateCapabilitiesResponse> {
+): Promise<UpdateAccountCapabilitiesResponse> {
   return client.send(
     {
-      descriptor: UPDATE_CAPABILITIES,
+      descriptor: UPDATE_ACCOUNT_CAPABILITIES,
       body,
     },
     options,
