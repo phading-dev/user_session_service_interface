@@ -1,0 +1,6 @@
+- kind: Service
+  name: UserSessionWebService
+  clientType: WEB
+- kind: Service
+  name: UserSessionNodeService
+  clientType: NODE

@@ -58,9 +58,11 @@
       type: Capabilities
       import: ./capabilities
       index: 3
-- kind: NodeService
-  name: UserSessionNodeService
-  remoteCalls:
+- kind: RemoteCallsGroup
+  name: UserSessionNodeRemoteCalls
+  service: UserSessionNodeService
+  importService: ./service
+  calls:
     - name: CreateSession
       path: /CreateSession
       body: CreateSessionRequestBody

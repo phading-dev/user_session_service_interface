@@ -1,6 +1,7 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 import { Capabilities, CAPABILITIES, CapabilitiesMask, CAPABILITIES_MASK } from '../capabilities';
-import { NodeRemoteCallDescriptor } from '@selfage/service_descriptor';
+import { USER_SESSION_NODE_SERVICE } from '../service';
+import { RemoteCallDescriptor } from '@selfage/service_descriptor';
 
 export interface CreateSessionRequestBody {
   userId?: string,
@@ -115,8 +116,9 @@ export let EXCHANGE_SESSION_AND_CHECK_CAPABILITY_RESPONSE: MessageDescriptor<Exc
   }],
 };
 
-export let CREATE_SESSION: NodeRemoteCallDescriptor = {
+export let CREATE_SESSION: RemoteCallDescriptor = {
   name: "CreateSession",
+  service: USER_SESSION_NODE_SERVICE,
   path: "/CreateSession",
   body: {
     messageType: CREATE_SESSION_REQUEST_BODY,
@@ -126,8 +128,9 @@ export let CREATE_SESSION: NodeRemoteCallDescriptor = {
   },
 }
 
-export let UPDATE_ACCOUNT_CAPABILITIES: NodeRemoteCallDescriptor = {
+export let UPDATE_ACCOUNT_CAPABILITIES: RemoteCallDescriptor = {
   name: "UpdateAccountCapabilities",
+  service: USER_SESSION_NODE_SERVICE,
   path: "/UpdateAccountCapabilities",
   body: {
     messageType: UPDATE_ACCOUNT_CAPABILITIES_REQUEST_BODY,
@@ -137,8 +140,9 @@ export let UPDATE_ACCOUNT_CAPABILITIES: NodeRemoteCallDescriptor = {
   },
 }
 
-export let EXCHANGE_SESSION_AND_CHECK_CAPABILITY: NodeRemoteCallDescriptor = {
+export let EXCHANGE_SESSION_AND_CHECK_CAPABILITY: RemoteCallDescriptor = {
   name: "ExchangeSessionAndCheckCapability",
+  service: USER_SESSION_NODE_SERVICE,
   path: "/ExchangeSessionAndCheckCapability",
   body: {
     messageType: EXCHANGE_SESSION_AND_CHECK_CAPABILITY_REQUEST_BODY,

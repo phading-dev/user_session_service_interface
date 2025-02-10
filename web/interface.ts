@@ -1,6 +1,7 @@
 import { MessageDescriptor } from '@selfage/message/descriptor';
 import { CapabilitiesMask, CAPABILITIES_MASK, Capabilities, CAPABILITIES } from '../capabilities';
-import { WebRemoteCallDescriptor } from '@selfage/service_descriptor';
+import { USER_SESSION_WEB_SERVICE } from '../service';
+import { RemoteCallDescriptor } from '@selfage/service_descriptor';
 
 export interface RenewSessionRequestBody {
 }
@@ -44,25 +45,27 @@ export let CHECK_CAPABILITY_RESPONSE: MessageDescriptor<CheckCapabilityResponse>
   }],
 };
 
-export let CHECK_CAPABILITY: WebRemoteCallDescriptor = {
+export let CHECK_CAPABILITY: RemoteCallDescriptor = {
   name: "CheckCapability",
+  service: USER_SESSION_WEB_SERVICE,
   path: "/CheckCapability",
   body: {
     messageType: CHECK_CAPABILITY_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "a",
   response: {
     messageType: CHECK_CAPABILITY_RESPONSE,
   },
 }
 
-export let RENEW_SESSION: WebRemoteCallDescriptor = {
+export let RENEW_SESSION: RemoteCallDescriptor = {
   name: "RenewSession",
+  service: USER_SESSION_WEB_SERVICE,
   path: "/RenewSession",
   body: {
     messageType: RENEW_SESSION_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "a",
   response: {
     messageType: RENEW_SESSION_RESPONSE,
   },

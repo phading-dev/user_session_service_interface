@@ -1,30 +1,20 @@
 import { CheckCapabilityRequestBody, CheckCapabilityResponse, CHECK_CAPABILITY, RenewSessionRequestBody, RenewSessionResponse, RENEW_SESSION } from './interface';
-import { WebClientInterface, WebClientOptions } from '@selfage/service_descriptor/client_interface';
+import { ClientRequestInterface } from '@selfage/service_descriptor/client_request_interface';
 
-export function checkCapability(
-  client: WebClientInterface,
+export function newCheckCapabilityRequest(
   body: CheckCapabilityRequestBody,
-  options?: WebClientOptions,
-): Promise<CheckCapabilityResponse> {
-  return client.send(
-    {
-      descriptor: CHECK_CAPABILITY,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<CheckCapabilityResponse> {
+  return {
+    descriptor: CHECK_CAPABILITY,
+    body,
+  };
 }
 
-export function renewSession(
-  client: WebClientInterface,
+export function newRenewSessionRequest(
   body: RenewSessionRequestBody,
-  options?: WebClientOptions,
-): Promise<RenewSessionResponse> {
-  return client.send(
-    {
-      descriptor: RENEW_SESSION,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<RenewSessionResponse> {
+  return {
+    descriptor: RENEW_SESSION,
+    body,
+  };
 }

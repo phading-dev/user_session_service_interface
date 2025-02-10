@@ -1,44 +1,29 @@
 import { CreateSessionRequestBody, CreateSessionResponse, CREATE_SESSION, UpdateAccountCapabilitiesRequestBody, UpdateAccountCapabilitiesResponse, UPDATE_ACCOUNT_CAPABILITIES, ExchangeSessionAndCheckCapabilityRequestBody, ExchangeSessionAndCheckCapabilityResponse, EXCHANGE_SESSION_AND_CHECK_CAPABILITY } from './interface';
-import { NodeClientInterface, NodeClientOptions } from '@selfage/service_descriptor/client_interface';
+import { ClientRequestInterface } from '@selfage/service_descriptor/client_request_interface';
 
-export function createSession(
-  client: NodeClientInterface,
+export function newCreateSessionRequest(
   body: CreateSessionRequestBody,
-  options?: NodeClientOptions,
-): Promise<CreateSessionResponse> {
-  return client.send(
-    {
-      descriptor: CREATE_SESSION,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<CreateSessionResponse> {
+  return {
+    descriptor: CREATE_SESSION,
+    body,
+  };
 }
 
-export function updateAccountCapabilities(
-  client: NodeClientInterface,
+export function newUpdateAccountCapabilitiesRequest(
   body: UpdateAccountCapabilitiesRequestBody,
-  options?: NodeClientOptions,
-): Promise<UpdateAccountCapabilitiesResponse> {
-  return client.send(
-    {
-      descriptor: UPDATE_ACCOUNT_CAPABILITIES,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<UpdateAccountCapabilitiesResponse> {
+  return {
+    descriptor: UPDATE_ACCOUNT_CAPABILITIES,
+    body,
+  };
 }
 
-export function exchangeSessionAndCheckCapability(
-  client: NodeClientInterface,
+export function newExchangeSessionAndCheckCapabilityRequest(
   body: ExchangeSessionAndCheckCapabilityRequestBody,
-  options?: NodeClientOptions,
-): Promise<ExchangeSessionAndCheckCapabilityResponse> {
-  return client.send(
-    {
-      descriptor: EXCHANGE_SESSION_AND_CHECK_CAPABILITY,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<ExchangeSessionAndCheckCapabilityResponse> {
+  return {
+    descriptor: EXCHANGE_SESSION_AND_CHECK_CAPABILITY,
+    body,
+  };
 }

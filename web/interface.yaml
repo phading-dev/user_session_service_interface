@@ -16,18 +16,20 @@
       type: Capabilities
       import: ./capabilities
       index: 1
-- kind: WebService
-  name: UserSessionWebService
-  remoteCalls:
+- kind: RemoteCallsGroup
+  name: UserSessionWebRemoteCalls
+  service: UserSessionWebService
+  importService: ./service
+  calls:
     - name: CheckCapability
       path: /CheckCapability
       body: CheckCapabilityRequestBody
-      sessionKey: sk
+      authKey: a
       response: CheckCapabilityResponse
     - name: RenewSession
       path: /RenewSession
       body: RenewSessionRequestBody
-      sessionKey: sk
+      authKey: a
       response: RenewSessionResponse
   outputClient: ./web/client
   outputHandler: ./web/handler
