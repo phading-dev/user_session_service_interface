@@ -1,16 +1,11 @@
-import { ClientType } from '@selfage/service_descriptor/client_type';
-import { HttpsServiceDescriptor, HttpServiceDescriptor } from '@selfage/service_descriptor';
+import { ServiceDescriptor } from '@selfage/service_descriptor';
 
-export let USER_SESSION_WEB_SERVICE: HttpsServiceDescriptor = {
+export let USER_SESSION_WEB_SERVICE: ServiceDescriptor = {
   name: "UserSessionWebService",
-  clientType: ClientType.WEB,
-  protocol: "https",
-  port: 443,
+  path: "/us/w",
 }
 
-export let USER_SESSION_NODE_SERVICE: HttpServiceDescriptor = {
+export let USER_SESSION_NODE_SERVICE: ServiceDescriptor = {
   name: "UserSessionNodeService",
-  clientType: ClientType.NODE,
-  protocol: "http",
-  port: 80,
+  path: "/us/n",
 }

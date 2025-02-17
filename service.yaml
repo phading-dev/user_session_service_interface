@@ -1,6 +1,6 @@
 - kind: Service
   name: UserSessionWebService
-  clientType: WEB
+  path: /us/w
 - kind: Service
   name: UserSessionNodeService
-  clientType: NODE
+  path: /us/n
