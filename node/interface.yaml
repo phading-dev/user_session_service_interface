@@ -36,7 +36,7 @@
 - kind: Message
   name: UpdateAccountCapabilitiesResponse
 - kind: Message
-  name: ExchangeSessionAndCheckCapabilityRequestBody
+  name: FetchSessionAndCheckCapabilityRequestBody
   fields:
     - name: signedSession
       type: string
@@ -46,7 +46,7 @@
       import: ./capabilities
       index: 2
 - kind: Message
-  name: ExchangeSessionAndCheckCapabilityResponse
+  name: FetchSessionAndCheckCapabilityResponse
   fields:
     - name: userId
       type: string
@@ -58,6 +58,10 @@
       type: Capabilities
       import: ./capabilities
       index: 3
+- kind: Message
+  name: DeleteExpiredSessionsRequestBody
+- kind: Message
+  name: DeleteExpiredSessionsResponse
 - kind: RemoteCallsGroup
   name: UserSessionNodeRemoteCalls
   service: UserSessionNodeService
@@ -71,9 +75,13 @@
       path: /UpdateAccountCapabilities
       body: UpdateAccountCapabilitiesRequestBody
       response: UpdateAccountCapabilitiesResponse
-    - name: ExchangeSessionAndCheckCapability
-      path: /ExchangeSessionAndCheckCapability
-      body: ExchangeSessionAndCheckCapabilityRequestBody
-      response: ExchangeSessionAndCheckCapabilityResponse
+    - name: FetchSessionAndCheckCapability
+      path: /FetchSessionAndCheckCapability
+      body: FetchSessionAndCheckCapabilityRequestBody
+      response: FetchSessionAndCheckCapabilityResponse
+    - name: DeleteExpiredSessions
+      path: /DeleteExpiredSessions
+      body: DeleteExpiredSessionsRequestBody
+      response: DeleteExpiredSessionsResponse
   outputClient: ./node/client
   outputHandler: ./node/handler

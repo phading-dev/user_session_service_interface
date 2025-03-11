@@ -1,8 +1,8 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 
 export interface Capabilities {
-  canConsumeShows?: boolean,
-  canPublishShows?: boolean,
+  canConsume?: boolean,
+  canPublish?: boolean,
   canBeBilled?: boolean,
   canEarn?: boolean,
 }
@@ -10,11 +10,11 @@ export interface Capabilities {
 export let CAPABILITIES: MessageDescriptor<Capabilities> = {
   name: 'Capabilities',
   fields: [{
-    name: 'canConsumeShows',
+    name: 'canConsume',
     index: 1,
     primitiveType: PrimitiveType.BOOLEAN,
   }, {
-    name: 'canPublishShows',
+    name: 'canPublish',
     index: 2,
     primitiveType: PrimitiveType.BOOLEAN,
   }, {
@@ -29,8 +29,8 @@ export let CAPABILITIES: MessageDescriptor<Capabilities> = {
 };
 
 export interface CapabilitiesMask {
-  checkCanConsumeShows?: boolean,
-  checkCanPublishShows?: boolean,
+  checkCanConsume?: boolean,
+  checkCanPublish?: boolean,
   checkCanBeBilled?: boolean,
   checkCanEarn?: boolean,
 }
@@ -38,11 +38,11 @@ export interface CapabilitiesMask {
 export let CAPABILITIES_MASK: MessageDescriptor<CapabilitiesMask> = {
   name: 'CapabilitiesMask',
   fields: [{
-    name: 'checkCanConsumeShows',
+    name: 'checkCanConsume',
     index: 1,
     primitiveType: PrimitiveType.BOOLEAN,
   }, {
-    name: 'checkCanPublishShows',
+    name: 'checkCanPublish',
     index: 2,
     primitiveType: PrimitiveType.BOOLEAN,
   }, {

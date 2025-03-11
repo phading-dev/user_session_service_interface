@@ -75,13 +75,13 @@ export let UPDATE_ACCOUNT_CAPABILITIES_RESPONSE: MessageDescriptor<UpdateAccount
   fields: [],
 };
 
-export interface ExchangeSessionAndCheckCapabilityRequestBody {
+export interface FetchSessionAndCheckCapabilityRequestBody {
   signedSession?: string,
   capabilitiesMask?: CapabilitiesMask,
 }
 
-export let EXCHANGE_SESSION_AND_CHECK_CAPABILITY_REQUEST_BODY: MessageDescriptor<ExchangeSessionAndCheckCapabilityRequestBody> = {
-  name: 'ExchangeSessionAndCheckCapabilityRequestBody',
+export let FETCH_SESSION_AND_CHECK_CAPABILITY_REQUEST_BODY: MessageDescriptor<FetchSessionAndCheckCapabilityRequestBody> = {
+  name: 'FetchSessionAndCheckCapabilityRequestBody',
   fields: [{
     name: 'signedSession',
     index: 1,
@@ -93,14 +93,14 @@ export let EXCHANGE_SESSION_AND_CHECK_CAPABILITY_REQUEST_BODY: MessageDescriptor
   }],
 };
 
-export interface ExchangeSessionAndCheckCapabilityResponse {
+export interface FetchSessionAndCheckCapabilityResponse {
   userId?: string,
   accountId?: string,
   capabilities?: Capabilities,
 }
 
-export let EXCHANGE_SESSION_AND_CHECK_CAPABILITY_RESPONSE: MessageDescriptor<ExchangeSessionAndCheckCapabilityResponse> = {
-  name: 'ExchangeSessionAndCheckCapabilityResponse',
+export let FETCH_SESSION_AND_CHECK_CAPABILITY_RESPONSE: MessageDescriptor<FetchSessionAndCheckCapabilityResponse> = {
+  name: 'FetchSessionAndCheckCapabilityResponse',
   fields: [{
     name: 'userId',
     index: 1,
@@ -114,6 +114,22 @@ export let EXCHANGE_SESSION_AND_CHECK_CAPABILITY_RESPONSE: MessageDescriptor<Exc
     index: 3,
     messageType: CAPABILITIES,
   }],
+};
+
+export interface DeleteExpiredSessionsRequestBody {
+}
+
+export let DELETE_EXPIRED_SESSIONS_REQUEST_BODY: MessageDescriptor<DeleteExpiredSessionsRequestBody> = {
+  name: 'DeleteExpiredSessionsRequestBody',
+  fields: [],
+};
+
+export interface DeleteExpiredSessionsResponse {
+}
+
+export let DELETE_EXPIRED_SESSIONS_RESPONSE: MessageDescriptor<DeleteExpiredSessionsResponse> = {
+  name: 'DeleteExpiredSessionsResponse',
+  fields: [],
 };
 
 export let CREATE_SESSION: RemoteCallDescriptor = {
@@ -140,14 +156,26 @@ export let UPDATE_ACCOUNT_CAPABILITIES: RemoteCallDescriptor = {
   },
 }
 
-export let EXCHANGE_SESSION_AND_CHECK_CAPABILITY: RemoteCallDescriptor = {
-  name: "ExchangeSessionAndCheckCapability",
+export let FETCH_SESSION_AND_CHECK_CAPABILITY: RemoteCallDescriptor = {
+  name: "FetchSessionAndCheckCapability",
   service: USER_SESSION_NODE_SERVICE,
-  path: "/ExchangeSessionAndCheckCapability",
+  path: "/FetchSessionAndCheckCapability",
   body: {
-    messageType: EXCHANGE_SESSION_AND_CHECK_CAPABILITY_REQUEST_BODY,
+    messageType: FETCH_SESSION_AND_CHECK_CAPABILITY_REQUEST_BODY,
   },
   response: {
-    messageType: EXCHANGE_SESSION_AND_CHECK_CAPABILITY_RESPONSE,
+    messageType: FETCH_SESSION_AND_CHECK_CAPABILITY_RESPONSE,
+  },
+}
+
+export let DELETE_EXPIRED_SESSIONS: RemoteCallDescriptor = {
+  name: "DeleteExpiredSessions",
+  service: USER_SESSION_NODE_SERVICE,
+  path: "/DeleteExpiredSessions",
+  body: {
+    messageType: DELETE_EXPIRED_SESSIONS_REQUEST_BODY,
+  },
+  response: {
+    messageType: DELETE_EXPIRED_SESSIONS_RESPONSE,
   },
 }

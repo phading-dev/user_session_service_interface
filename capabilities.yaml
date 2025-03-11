@@ -1,10 +1,10 @@
 - kind: Message
   name: Capabilities
   fields:
-    - name: canConsumeShows
+    - name: canConsume
       type: boolean
       index: 1
-    - name: canPublishShows
+    - name: canPublish
       type: boolean
       index: 2
     - name: canBeBilled
@@ -16,10 +16,10 @@
 - kind: Message
   name: CapabilitiesMask
   fields:
-    - name: checkCanConsumeShows
+    - name: checkCanConsume
       type: boolean
       index: 1
-    - name: checkCanPublishShows
+    - name: checkCanPublish
       type: boolean
       index: 2
     - name: checkCanBeBilled
